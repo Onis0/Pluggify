@@ -1,79 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <title>Pluggify Flashcards</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pluggify XP</title>
+
+    <!-- PWA metadata -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Pluggify XP" />
+    <meta name="theme-color" content="#4CAF50" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>Flashcards Demo</h1>
-    </header>
-    <main>
-      <div class="flashcard-container">
-        <div class="flashcard" id="flashcard">
-          <div class="flashcard-inner">
-            <div class="flashcard-front" id="flashcard-front"></div>
-            <div class="flashcard-back" id="flashcard-back"></div>
-          </div>
-        </div>
-      </div>
-      <div class="controls">
-        <button id="prev-btn">Previous</button>
-        <span id="card-counter"></span>
-        <button id="next-btn">Next</button>
-      </div>
-    </main>
-    <script>
-      const flashcards = [
-        { front: "What is the capital of France?", back: "Paris" },
-        { front: "What is 2 + 2?", back: "4" },
-        {
-          front: "What color do you get when you mix red and blue?",
-          back: "Purple",
-        },
-        { front: "Who wrote 'Hamlet'?", back: "William Shakespeare" },
-        { front: "What is the boiling point of water (°C)?", back: "100°C" },
-      ];
-      let current = 0;
-      let flipped = false;
+    <h1>Pluggify XP</h1>
+    <div>Ditt XP är:</div>
+    <div id="xp-value">0</div>
+    <button id="decrease">-</button>
+    <button id="increase">+</button>
 
-      const flashcard = document.getElementById("flashcard");
-      const front = document.getElementById("flashcard-front");
-      const back = document.getElementById("flashcard-back");
-      const counter = document.getElementById("card-counter");
-      const prevBtn = document.getElementById("prev-btn");
-      const nextBtn = document.getElementById("next-btn");
-
-      function updateCard() {
-        front.textContent = flashcards[current].front;
-        back.textContent = flashcards[current].back;
-        counter.textContent = `Card ${current + 1} of ${flashcards.length}`;
-        flashcard.classList.remove("flipped");
-        flipped = false;
-      }
-
-      flashcard.addEventListener("click", () => {
-        flipped = !flipped;
-        flashcard.classList.toggle("flipped", flipped);
-      });
-
-      prevBtn.addEventListener("click", () => {
-        if (current > 0) {
-          current--;
-          updateCard();
-        }
-      });
-
-      nextBtn.addEventListener("click", () => {
-        if (current < flashcards.length - 1) {
-          current++;
-          updateCard();
-        }
-      });
-
-      updateCard();
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
