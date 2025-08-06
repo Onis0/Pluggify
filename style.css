@@ -1,46 +1,94 @@
 body {
-  background: #f4f7fa;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
   margin: 0;
   padding: 0;
-  color: #222;
 }
+
 header {
-  background: #4f8cff;
+  background: #4a90e2;
   color: #fff;
-  padding: 2rem 0;
+  padding: 1em 0;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
 main {
-  max-width: 500px;
-  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.flashcard-container {
+  perspective: 1000px;
+  margin-bottom: 1em;
+}
+
+.flashcard {
+  width: 320px;
+  height: 200px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 2, 0.6, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  padding: 2rem;
-  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  padding: 1em;
+  box-sizing: border-box;
 }
-h1 {
-  margin: 0 0 0.5em 0;
-  font-size: 2.5rem;
-  letter-spacing: 1px;
-}
-p {
-  font-size: 1.15rem;
-  margin-bottom: 2rem;
-  color: #555;
-}
-button {
-  background: #4f8cff;
+
+.flashcard-back {
+  background: #4a90e2;
   color: #fff;
+  transform: rotateY(180deg);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+button {
+  padding: 0.5em 1.2em;
+  font-size: 1em;
   border: none;
-  padding: 0.75em 2em;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 6px;
+  background: #4a90e2;
+  color: #fff;
   cursor: pointer;
   transition: background 0.2s;
 }
-button:hover {
-  background: #3570d4;
+
+button:disabled {
+  background: #b0c4de;
+  cursor: not-allowed;
+}
+
+#card-counter {
+  font-size: 1em;
+  color: #333;
 }
